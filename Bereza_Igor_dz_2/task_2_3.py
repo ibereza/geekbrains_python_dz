@@ -1,28 +1,17 @@
 lst = ['в', '5', 'часов', '17', 'минут', 'температура',
        'воздуха', 'была', '+5', 'градусов']
 
-count = 0
+for i in  reversed(range(0, len(lst))):
+    if lst[i][0] in ('+', '-'):
+        if lst[i][1:].isnumeric():
+            lst.insert(i + 1, '"')
+            lst[i] = f'{lst[i][0]}{int(lst[i][1:]):02d}'
+            lst.insert(i, '"')
+    elif lst[i].isnumeric():
+        lst.insert(i + 1, '"')
+        lst[i] = f'{int(lst[i]):02d}'
+        lst.insert(i, '"')
 
-while count < len(lst):
-    if lst[count][0] in ('+', '-'):
-        if lst[count][1:].isnumeric():
-            lst.insert(count, '"')
-            count += 1
-            lst[count] = f'{lst[count][0]}{int(lst[count][1:]):02d}'
-            count += 1
-            lst.insert(count, '"')
-            count += 1
-        else:
-            count += 1
-    elif lst[count].isnumeric():
-        lst.insert(count, '"')
-        count += 1
-        lst[count] = f'{int(lst[count]):02d}'
-        count += 1
-        lst.insert(count, '"')
-        count += 1
-    else:
-        count += 1
 print(lst)
 
 message = " ".join(lst)
