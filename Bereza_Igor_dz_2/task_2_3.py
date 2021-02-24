@@ -1,7 +1,7 @@
 lst = ['в', '5', 'часов', '17', 'минут', 'температура',
        'воздуха', 'была', '+5', 'градусов']
 
-for i in  reversed(range(0, len(lst))):
+for i in reversed(range(0, len(lst))):
     if lst[i][0] in ('+', '-'):
         if lst[i][1:].isnumeric():
             lst.insert(i + 1, '"')
