@@ -5,15 +5,13 @@ _lst = []
 for item in lst:
     if item[0] in ('+', '-'):
         if item[1:].isnumeric():
-            _lst.append('"')
-            _lst.append(f'{item[0]}{int(item[1:]):02d}')
-            _lst.append('"')
+            _num = f'{item[0]}{int(item[1:]):02d}'
+            _lst.extend(['"', _num, '"'])
         else:
             _lst.append(item)
     elif item.isnumeric():
-        _lst.append('"')
-        _lst.append(f'{int(item):02d}')
-        _lst.append('"')
+        _num = f'{int(item):02d}'
+        _lst.extend(['"', _num, '"'])
     else:
         _lst.append(item)
 
