@@ -14,22 +14,22 @@ def get_site_content(url):
 
 
 def parsing_content(content):
-    _lst = content.split("<")
+    _lst = content.split("><")
     currency_dict = {}
 
-    currency_date = _lst[2].split('"')[1]
+    currency_date = _lst[1].split('"')[1]
     currency_date = datetime.strptime(currency_date.replace(".", ""),
                                       '%d%m%Y').date()
 
     for index, item in enumerate(_lst):
         if item.startswith("CharCode"):
-            currency_dict.setdefault(item[-3:], {})
-            currency_dict[item[-3:]].setdefault(
-                "Nominal", int(_lst[index + 2].split(">")[1]))
-            currency_dict[item[-3:]].setdefault(
-                "Name", _lst[index + 4].split(">")[1])
-            currency_dict[item[-3:]].setdefault("Value",
-                    Decimal(_lst[index + 6].split(">")[1].replace(",", ".")))
+            currency_dict.setdefault(item[9:-10], {})
+            currency_dict[item[9:-10]].setdefault(
+                "Nominal", int(_lst[index + 1][8:-9]))
+            currency_dict[item[9:-10]].setdefault(
+                "Name", _lst[index + 2][5:-6])
+            currency_dict[item[9:-10]].setdefault(
+                "Value", Decimal(_lst[index + 3][6:-7].replace(",", ".")))
 
     return currency_dict, currency_date
 
