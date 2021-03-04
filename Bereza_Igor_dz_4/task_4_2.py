@@ -6,8 +6,7 @@ URL = "http://www.cbr.ru/scripts/XML_daily.asp"
 
 def get_site_content(url):
     response = get(url)
-    encodings = utils.get_encoding_from_headers(response.headers)
-    content = response.content.decode(encoding=encodings)
+    content = response.text
 
     return content
 
