@@ -1,4 +1,4 @@
-from requests import get, utils
+from requests import get
 from decimal import Decimal
 
 URL = "http://www.cbr.ru/scripts/XML_daily.asp"

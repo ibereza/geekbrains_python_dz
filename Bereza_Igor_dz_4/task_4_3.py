@@ -1,4 +1,4 @@
-from requests import get, utils
+from requests import get
 from decimal import Decimal
 from datetime import datetime
 
