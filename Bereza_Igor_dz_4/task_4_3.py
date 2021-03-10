@@ -16,18 +16,18 @@ def parsing_content(content):
     _lst = content.split("><")
     currency_dict = {}
 
-    currency_date = _lst[1].split('"')[1]
-    currency_date = datetime.strptime(currency_date.replace(".", ""),
-                                      '%d%m%Y').date()
-
     for index, item in enumerate(_lst):
         if item.startswith("CharCode"):
             currency = item[9:-10]
             currency_dict[currency] = {}
             currency_dict[currency]["Nominal"] = int(_lst[index + 1][8:-9])
             currency_dict[currency]["Name"] = _lst[index + 2][5:-6]
-            currency_dict[currency]["Value"] = \
-                Decimal(_lst[index + 3][6:-7].replace(",", "."))
+            currency_dict[currency]["Value"] = (
+                Decimal(_lst[index + 3][6:-7].replace(",", ".")))
+
+    currency_date = _lst[1].split('"')[1]
+    currency_date = datetime.strptime(currency_date.replace(".", ""),
+                                      '%d%m%Y').date()
 
     return currency_dict, currency_date
 
