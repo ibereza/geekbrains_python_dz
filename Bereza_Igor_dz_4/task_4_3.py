@@ -22,13 +22,12 @@ def parsing_content(content):
 
     for index, item in enumerate(_lst):
         if item.startswith("CharCode"):
-            currency_dict.setdefault(item[9:-10], {})
-            currency_dict[item[9:-10]].setdefault(
-                "Nominal", int(_lst[index + 1][8:-9]))
-            currency_dict[item[9:-10]].setdefault(
-                "Name", _lst[index + 2][5:-6])
-            currency_dict[item[9:-10]].setdefault(
-                "Value", Decimal(_lst[index + 3][6:-7].replace(",", ".")))
+            currency = item[9:-10]
+            currency_dict[currency] = {}
+            currency_dict[currency]["Nominal"] = int(_lst[index + 1][8:-9])
+            currency_dict[currency]["Name"] = _lst[index + 2][5:-6]
+            currency_dict[currency]["Value"] = \
+                Decimal(_lst[index + 3][6:-7].replace(",", "."))
 
     return currency_dict, currency_date
 
