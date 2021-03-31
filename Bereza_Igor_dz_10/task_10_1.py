@@ -5,8 +5,7 @@ class Matrix:
     def __str__(self):
         __str = ''
         for el_list in self.matrix_list:
-            int_to_str = [str(i) for i in el_list]
-            __str += '\t'.join(int_to_str) + '\n'
+            __str += '\t'.join([str(i) for i in el_list]) + '\n'
         return __str
 
     def __add__(self, other):
