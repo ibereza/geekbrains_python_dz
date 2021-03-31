@@ -48,7 +48,7 @@ print(f'Для изготовления костюма на рост {suit.heigh
       f'{suit.consumption()} м2 ткани.')
 print(f'Общий расход ткани {coat.consumption() + suit.consumption()} м2')
 
-print()
+print('-------')
 
 coat.size = 18
 print(f'Для изготовления пальто {coat.size}-го размера необходимо '
