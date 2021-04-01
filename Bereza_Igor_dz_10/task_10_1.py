@@ -38,7 +38,7 @@ print('=')
 print(matrix_1 + matrix_2)
 
 matrix_1.matrix_list = [[3, 5, 32], [2, 4, 6], [-1, 64, -8]]
-matrix_2.matrix_list = [[-2, -4, -31], [-1, -3, -5], [2, -63, 9]]
+matrix_2.matrix_list = [[-3, -5, -32], [-2, -4, -6], [1, -64, 8]]
 print('сумма двух матриц:')
 print(matrix_1, end='')
 print('+')
