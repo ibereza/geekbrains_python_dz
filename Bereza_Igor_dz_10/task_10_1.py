@@ -9,13 +9,19 @@ class Matrix:
         return __str
 
     def __add__(self, other):
-        add_matrix_list = []
-        for i in range(len(self.matrix_list)):
-            add_matrix_list.append([])
-            for j in range(len(self.matrix_list[i])):
-                el = self.matrix_list[i][j] + other.matrix_list[i][j]
-                add_matrix_list[i].append(el)
-        return Matrix(add_matrix_list)
+        try:
+            if len(self.matrix_list) == len(other.matrix_list):
+                for i in range(len(self.matrix_list)):
+                    if len(self.matrix_list[i]) != len(other.matrix_list[i]):
+                        raise ValueError
+            else:
+                raise ValueError
+        except ValueError:
+            return 'Размерность матриц не совпадает!'
+        else:
+            result = [[(el[0] + el[1]) for el in zip(el[0], el[1])]
+                      for el in zip(self.matrix_list, other.matrix_list)]
+            return Matrix(result)
 
 
 matrix = Matrix([[31, 22], [37, 43], [51, 86]])
